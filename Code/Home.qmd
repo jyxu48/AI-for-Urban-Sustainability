@@ -1,0 +1,21 @@
+---
+title: "LLM-Based Evaluation of Street Walkability on Philadelphia's Major Streets"
+subtitle: |
+  Market, Chestnut, and Walnut Streets in the Eyes of AI
+  <div style="text-align:left; font-size:0.95em; margin-top:0.4rem;">
+    Jinyang Xu
+  </div>
+format:
+  html:
+    toc: false
+    page-layout: full
+    title-block-style: plain
+---
+
+<iframe 
+  src="map_total_score_with_ai_comment.html"
+  width="100%"
+  height="650"
+  style="border: none;"
+>
+</iframe>

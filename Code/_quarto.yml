@@ -1,0 +1,38 @@
+project:
+  type: website
+
+website:
+  title: "Final Project"
+  navbar: false
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - text: "Home"
+        href: Home.qmd
+      - text: "Introduction"
+        href: Introduction.qmd
+      - text: "Method"
+        href: Method.qmd
+      - text: "Getting Street-level Images"
+        href: "street view.ipynb"
+      - text: "Image Segmentation"
+        href: street_level_image_segmentation.ipynb
+      - text: "Scoring with LLM"
+        href: ai.ipynb
+      - text: "Visualization & Result"
+        href: Visualization.ipynb
+
+format:
+  html:
+    theme: cosmo
+    self-contained: true
+    code-fold: true
+    code-summary: "Click to show code"
+
+execute:
+  freeze: false
+  cache: false
+  echo: true
+  warning: false
+

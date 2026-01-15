@@ -1,0 +1,62 @@
+---
+title: "Method"
+---
+
+## Overview
+
+In this project, I build an end-to-end workflow to evaluate **street-level walkability** along three major east–west corridors that cut across Center City Philadelphia: Market Street, Chestnut Street, and Walnut Street.  
+
+The method has three main components:
+
+1. Collecting Google Street View images along these three streets.  
+2. Applying semantic segmentation to each image to derive the proportion of different visual elements (such as sky, road, sidewalk, buildings, and greenery).  
+3. Using a vision-enabled large language model (LLM) to rate the walkability of each street-view scene, producing a **0–100 walkability score** (four sub-scores, each out of 25).  
+
+For each location, the final output includes the street-view image, its visual composition, and a set of walkability scores that can be visualized and compared along the three corridors.
+
+## Step 1: Collecting street-view images along three main streets
+
+I focus on three streets—Market, Chestnut, and Walnut—because they are key commercial and pedestrian corridors that span the width of Center City Philadelphia and provide a good cross-section of downtown urban form.
+
+Along each street, I sample locations at regular intervals (e.g., every 250 meters) to create a set of representative points. For each point, I use the **Google Maps Street View API** to request a static street-view image. The camera position is set at the sampled location, and the heading is chosen so that the camera looks approximately **perpendicular to the street**, which better captures the sidewalk, building frontage, and immediate pedestrian environment rather than just the traffic lanes.
+
+This step produces a collection of street-view images that systematically cover the three corridors.
+
+## Step 2: Semantic segmentation of street-view images
+
+To turn the raw images into quantitative indicators, I apply a **semantic segmentation model** to each street-view image. The model assigns a class label (for example, sky, road, sidewalk, building, tree, grass, car) to every pixel in the image.
+
+From the segmentation results, I calculate the **proportion of image area** occupied by key elements that are relevant to walkability, such as:
+
+- proportion of sidewalk  
+- proportion of road  
+- proportion of buildings  
+- proportion of sky  
+- proportion of trees and grass (greenery)
+
+These proportions summarize the visual composition of each scene and provide a structured description that can complement what the LLM sees in the raw image. The segmentation statistics are stored together with the image identifier and geographic location.
+
+## Step 3: LLM-based walkability scoring (0–100 scale)
+
+In the final step, I use a **vision-enabled large language model** to evaluate the pedestrian environment of each street-view scene and to produce a walkability score on a **0–100 scale**.
+
+For every image, the model is given two types of input:
+
+1. The **original street-view image**, so the model can directly perceive the streetscape (sidewalk width, presence of obstacles, traffic exposure, trees, building frontage, etc.).  
+2. A short **text summary of the segmentation results**, reporting the percentage of the image covered by sidewalk, road, buildings, sky, and greenery.
+
+Based on these inputs, the LLM is prompted to assign **four sub-scores**, each ranging from **0 to 25**:
+
+- **Sidewalk quality and walkability score** (0–25)  
+- **Greenery score** (0–25)  
+- **Building enclosure score** (0–25), capturing the sense of street wall and spatial definition  
+- **Overall pedestrian-friendliness score** (0–25), reflecting the combined experience of comfort, safety, and visual quality  
+
+The **total walkability score** for each scene is defined as the sum of these four components:
+
+- **Total walkability score = sidewalk (0–25) + greenery (0–25) + enclosure (0–25) + overall pedestrian-friendliness (0–25)**  
+- This yields a composite score between **0 and 100**.
+
+The model also provides a brief textual rationale explaining why the scene is rated in a particular way (for example, noting narrow sidewalks, heavy traffic exposure, or strong tree canopy).  
+
+By combining semantic segmentation with LLM-based judgment on a unified 0–100 scale, this method links the measurable visual composition of the streetscape to interpretable and comparable walkability scores along Market, Chestnut, and Walnut Streets in Center City Philadelphia.

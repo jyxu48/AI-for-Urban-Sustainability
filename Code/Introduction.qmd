@@ -1,0 +1,38 @@
+---
+title: "Introduction"
+format:
+  html:
+    toc: false
+    page-layout: full
+---
+
+## When a Model “Walks” the Street
+
+In planning, walkability often begins as a number.  
+We count intersections.  
+We measure block lengths.  
+We map land use and transit access.  
+
+On paper, a corridor can appear highly walkable.  
+For the person on the sidewalk, that promise may fail.  
+Walkability becomes something much more concrete: pavement underfoot, trees above, building façades at eye level, pressure from traffic.
+
+Market, Chestnut, and Walnut Streets cut across Philadelphia from West Philly to the older core of the city.  
+They share a grid and a direction.  
+They do not share the same experience.  
+Some segments feel enclosed and active.  
+Others feel exposed, wide, dominated by cars.  
+Certain blocks feel unexpectedly comfortable or uncomfortable in ways that conventional indicators miss.
+
+Street-level imagery records these differences in detail.  
+Each frame shows what a pedestrian actually sees at that moment: sidewalk, roadway, buildings, sky, greenery.  
+The question is how to translate this visual field into an assessment of walkability along the three streets.
+
+In this project, a large language model acts as an external observer.  
+It reviews street view scenes along Market, Chestnut, and Walnut, then offers judgments about how walkable each place appears from the image alone.  
+
+This leads to a central question:
+
+> **When an LLM “walks” Philadelphia’s major east–west streets through images,  
+> where does it perceive strong walkability, where does it detect weak spots, and what does that reveal about everyday movement across the city?**
+
