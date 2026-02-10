@@ -9,7 +9,7 @@ website:
     search: true
     contents:
       - text: "Home"
-        href: Home.qmd
+        href: index.qmd
       - text: "Introduction"
         href: Introduction.qmd
       - text: "Method"
